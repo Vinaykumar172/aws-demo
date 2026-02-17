@@ -12,11 +12,11 @@ phases:
   build:
     commands:
       - docker build -t springboot-app .
-      - docker tag springboot-app:latest 017789174567.dkr.ecr.us-east-1.amazonaws.com/spring-demo-aws:$IMAGE_TAG
+      - docker tag springboot-app:latest 017789174567.dkr.ecr.us-east-1.amazonaws.com/spring-demo-aws:latest
 
   post_build:
     commands:
-      - docker push 017789174567.dkr.ecr.us-east-1.amazonaws.com/spring-demo-aws:$IMAGE_TAG
+      - docker push 017789174567.dkr.ecr.us-east-1.amazonaws.com/spring-demo-aws:latest
       - printf '[{"name":"springboot-container","imageUri":"%s"}]' 017789174567.dkr.ecr.us-east-1.amazonaws.com/spring-demo-aws:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
